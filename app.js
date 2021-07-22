@@ -129,6 +129,7 @@ app.post("/delete", function(req, res) {
   let delId = req.body.checkbox;
 
     mongoose.set('useFindAndModify', false);
+    
     List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: delId}}}, function(err, foundList){
       if (!err){
         res.redirect("/"+listName);
